@@ -6,7 +6,7 @@ import org.example.entities.Reservation;
 import java.sql.*;
 import java.util.*;
 
-public class PostgresDBRepository implements EntityDao<Reservation> {
+public class SQLDBRepository implements EntityDao<Reservation> {
 
     private final static String STORE_NEW_COMMAND = "INSERT INTO reservations (client_name, total_people, date_time, is_cancelled) VALUES (?, ?, ?, ?)";
     private final static String DELETE_COMMAND = "DELETE FROM reservations WHERE id = ?";
@@ -16,7 +16,7 @@ public class PostgresDBRepository implements EntityDao<Reservation> {
 
     private final SQLConnectionProvider connProvider;
 
-    public PostgresDBRepository(SQLConnectionProvider connProvider) {
+    public SQLDBRepository(SQLConnectionProvider connProvider) {
         this.connProvider = connProvider;
     }
 

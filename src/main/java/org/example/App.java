@@ -2,7 +2,7 @@ package org.example;
 
 import org.example.conections.PostgresConnectionProvider;
 import org.example.daos.EntityDao;
-import org.example.daos.PostgresDBRepository;
+import org.example.daos.SQLDBRepository;
 import org.example.entities.Reservation;
 import org.example.mappers.ReservationsMapper;
 import org.example.services.ReservationsService;
@@ -19,7 +19,7 @@ public class App
                 System.getenv("DB_USER"),
                 System.getenv("DB_PASSWORD")
         );
-        EntityDao<Reservation> repo = new PostgresDBRepository(connProvider);
+        EntityDao<Reservation> repo = new SQLDBRepository(connProvider);
         ReservationsService service = new ReservationsServiceImplementation(repo, new ReservationsFilterer(repo), new ReservationsMapper());
         ReservationsSystemCLI reservationsSystem = new ReservationsSystemCLI(service, new ConsoleDisplay());
         reservationsSystem.run();
